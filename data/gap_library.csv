@@ -1,0 +1,6 @@
+step_type,industry,layer_type,content_prompt_template
+research,coffee_shop,unseen,Which customer behavior is being assumed rather than observed?
+interview,saas,missing_voice,The person who must use this every day may reject extra workflow.
+validate,service,real_cost,Sales conversations take more calendar time than the meeting itself.
+launch,creator,unseen,What happens after the first audience spike fades?
+

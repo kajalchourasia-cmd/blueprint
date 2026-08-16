@@ -1,0 +1,6 @@
+industry,city_size,step_type,cash_low,cash_high,hours_low,hours_high,relationship_impact_level,health_impact_level,opportunity_cost_factor
+coffee_shop,small_city,research,50,300,6,15,low,low,0.1
+saas,large_city,interview,0,100,8,20,none,low,0.2
+service,anywhere,validate,0,250,5,12,low,low,0.1
+creator,anywhere,launch,0,150,10,25,medium,medium,0.15
+
