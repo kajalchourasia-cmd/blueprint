@@ -6,13 +6,18 @@ Goal = Literal["get_job", "side_income", "small_business", "startup", "raise_mon
 
 class UserProfile(BaseModel):
     idea: str
-    idea_type: IdeaType
-    location: str
-    background: str
-    life_context: list[str]
-    goal: Goal
-    hours_per_week: int
-    money_available: int
+    idea_type: IdeaType = "other"
+    location: str = ""
+    target_customer: str = ""
+    background: str = ""
+    life_context: list[str] = Field(default_factory=list)
+    goal: str = "test_whether_idea_can_work"
+    success_definition: str = ""
+    launch_timeline: str = "Not sure"
+    current_work: str = ""
+    constraints: list[str] = Field(default_factory=list)
+    hours_per_week: int = 5
+    money_available: int = 500
 
 class RealityCheck(BaseModel):
     fit_score: int = Field(ge=1, le=10)
@@ -32,6 +37,12 @@ class Step(BaseModel):
     estimated_cost_dollars: int
     estimated_hours: int
     step_type: str
+    action_checklist: list[str] = Field(default_factory=list)
+    people_to_contact: list[str] = Field(default_factory=list)
+    places_or_channels: list[str] = Field(default_factory=list)
+    evidence_to_capture: list[str] = Field(default_factory=list)
+    decision_signal: str = ""
+    likely_blocker: str = ""
 
 class Plan(BaseModel):
     steps: list[Step] = Field(min_length=8, max_length=15)
@@ -50,4 +61,3 @@ class CostLedger(BaseModel):
     health_impact_score: int
     opportunity_cost_dollars: int
     projected_3yr_total: int
-

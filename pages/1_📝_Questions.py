@@ -2,12 +2,27 @@ import streamlit as st
 from blueprint.schemas import UserProfile
 from blueprint.state import reset
 
-st.set_page_config(page_title="Questions · Blueprint", page_icon="📝")
+st.set_page_config(page_title="Questions · Blueprint", page_icon="📝", layout="wide")
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap');
+:root{--paper:#b8e4bb;--ink:#087a38;--dark:#075c2d}
+[data-testid="stAppViewContainer"],[data-testid="stHeader"]{background:var(--paper)}
+main .block-container{max-width:900px;padding:28px 5vw 80px}
+.bp-nav{display:flex;justify-content:space-between;border-bottom:1px solid var(--ink);padding:0 0 18px;color:var(--dark);font:12px 'DM Mono',monospace;text-transform:uppercase}
+.bp-kicker{margin-top:70px;color:var(--ink);font:12px 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+.bp-title{margin:16px 0 36px;color:var(--dark);font:500 clamp(44px,7vw,84px)/.9 'Space Grotesk',sans-serif;letter-spacing:-.08em}
+.bp-progress{font:12px 'DM Mono',monospace;color:var(--dark);text-transform:uppercase;border-top:1px solid var(--ink);padding-top:12px}
+.stProgress>div>div{background:var(--dark)!important}.stTextArea label,.stTextInput label,.stSelectbox label,.stMultiSelect label,.stRadio label,.stSlider label{color:var(--dark)!important;font:500 15px 'DM Mono',monospace!important}.stTextArea textarea,.stTextInput input,.stSelectbox>div,.stMultiSelect>div{background:#fff!important;border:1px solid var(--ink)!important;border-radius:0!important;color:var(--dark)!important}.stButton button{border-radius:0!important;background:var(--dark)!important;color:#fff!important;border:1px solid var(--dark)!important;font:500 13px 'DM Mono',monospace!important}
+</style>
+<div class="bp-nav"><span>BLUEPRINT / ALPHA</span><span>ONE QUESTION AT A TIME</span><span>02 — 03</span></div>
+<div class="bp-kicker">The founder context</div><div class="bp-title">Before the plan,<br>we need the truth.</div>
+""", unsafe_allow_html=True)
 reset(); st.session_state.setdefault("answers", {})
 questions = st.session_state["answers"]
 idx = st.session_state["question_index"]
 st.progress((idx + 1) / 7, text=f"Question {idx + 1} of 7")
-st.title("Build your context")
+st.markdown(f'<div class="bp-progress">Question {idx + 1} of 7 · This shapes the first experiment</div>', unsafe_allow_html=True)
 idea = st.session_state.get("idea", "")
 if idx == 0: questions["idea"] = st.text_area("Confirm your idea", value=questions.get("idea", idea), height=150)
 elif idx == 1: questions["idea_type"] = st.selectbox("What type is it?", ["physical_business","retail_store","service","saas","ai_product","marketplace","creator","consumer_product","other"], index=0)
@@ -32,4 +47,3 @@ with c2:
                 st.session_state["profile"] = UserProfile(idea=questions["idea"], idea_type=questions["idea_type"], location=location, background=questions["background"], life_context=questions["life_context"], goal=questions["goal"], hours_per_week=questions["hours_per_week"], money_available=questions["money_available"])
                 st.switch_page("pages/2_🗺️_Your_Plan.py")
             except Exception as e: st.error(f"Please complete the question before continuing: {e}")
-
