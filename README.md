@@ -4,7 +4,8 @@ Blueprint is an evidence-first decision system for turning an unfinished product
 
 ## Product walkthrough
 
-[Watch the Blueprint demo on Loom](https://www.loom.com/share/de86feccf09e4e1895856799e4a0542b)
+- **Video Walkthrough:** [Loom Link](https://www.loom.com/share/de86feccf09e4e1895856799e4a0542b)
+- **Streamlit Link Demo:** [Streamlit link](https://blueprintxo.streamlit.app/)
 
 Instead of producing a generic plan, Blueprint combines founder context, executable phase actions, planning priors, financial gates, and observed evidence. The interface keeps those sources visibly separate so an estimate is never presented as validation.
 
